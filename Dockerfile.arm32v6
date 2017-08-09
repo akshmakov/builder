@@ -23,6 +23,7 @@ RUN apt-get update                   &&\
 	    kpartx 		       \
 	    bc 			       \
 	    cmake 		       \
+	    git			       \
 	    device-tree-compiler     &&\
     rm -rf /var/lib/apt/lists/*      &&\
     adduser --disabled-password        \
