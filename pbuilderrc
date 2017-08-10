@@ -1,0 +1,21 @@
+# Enable local package caching
+OTHERMIRROR="deb [trusted=yes] file://${PBUILDER_REPO:-/var/opt/pbuilder/repo} ./"
+
+# Mount our local mirror
+BINDMOUNTS="$PBUILDER_REPO"
+
+# Hooks for running pbuilder
+HOOKDIR=${PBUILDER_HOOKS-"/var/opt/pbuilder/hooks"}
+
+# Build Files
+BUILDPLACE=${PBUILDER_BUILDDIR-"/workspace/build/"}
+
+# Build Result
+BUILDRESULT=${PBUILDER_RESULTDIR-"/workspace/output/"}
+
+# build cache
+CCACHEDIR=${PBUILDER-CCACHEDIR-"/workspace/ccache"}
+
+DISTRIBUTION=${PBUILDER_DISTRIBUTION-""}
+
+EXTRAPACKAGES=${PBUILDER_EXTRAPACKAGES-"apt-utils"}
