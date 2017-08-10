@@ -16,6 +16,22 @@ BUILDRESULT=${PBUILDER_RESULTDIR-"/workspace/output/"}
 # build cache
 CCACHEDIR=${PBUILDER-CCACHEDIR-"/workspace/ccache"}
 
-DISTRIBUTION=${PBUILDER_DISTRIBUTION-""}
 
+## Switch for default image mirrors
+if [[ -n  $PBUILDER_DEBIAN ]]; then
+   MIRRORSITE=${PBUILDER_MIRRORSITE-"http://www.ip.debian.org/debian"}
+   DISTRIBUTION=${PBUILDER_DISTRIBUTION-"jessie"}
+else
+
+   MIRRORSITE=${PBUILDER_MIRRORSITE-"http://archive.ubuntu.com/ubuntu"}
+   DISTRIBUTION=${PBUILDER_DISTRIBUTION-"zesty"}
+
+fi
+
+## additional packages to put into the chroot
 EXTRAPACKAGES=${PBUILDER_EXTRAPACKAGES-"apt-utils"}
+
+##
+ARCHITECTURE=${PBUILDER_ARCHITECTURE-`dpkg --print-architecture`}
+
+BASETGZ=${PBUILDER_BASE-"/workspace/base.tgz"}
